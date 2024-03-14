@@ -1,0 +1,34 @@
+
+class Diagram
+    class Main {
+        -SearchEngine search_engine
+        +__init__(self, search_engine)
+        +play_game(self)
+    }
+    class SearchEngine {
+        -Index index
+        -Ranking ranking
+        -Summary summary
+        +__init__(self, index, ranking, summary)
+        +search(query: str)
+    }
+    class Index {
+        -KnowledgeBase knowledge_base
+        +create_index(data: dict)
+        +query_index(query: str) list
+    }
+    class Ranking {
+        +rank_results(results: list) list
+    }
+    class Summary {
+        +summarize_results(results: list) str
+    }
+    class KnowledgeBase {
+        +update(data: dict)
+        +fetch_data(query: str) dict
+    }
+    Main --> SearchEngine
+    SearchEngine --> Index
+    SearchEngine --> Ranking
+    SearchEngine --> Summary
+    Index --> KnowledgeBase

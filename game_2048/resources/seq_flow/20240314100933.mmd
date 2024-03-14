@@ -1,0 +1,18 @@
+
+sequenceDiagram
+    participant M as Main
+    participant SE as SearchEngine
+    participant I as Index
+    participant R as Ranking
+    participant S as Summary
+    participant KB as KnowledgeBase
+    M->>SE: __init__(search_engine)
+    SE->>I: __init__(index, ranking, summary)
+    I->>KB: create_index(data)
+    KB-->>I: return data
+    I-->>SE: query_index(query)
+    SE->>R: rank_results(results)
+    R-->>SE: return ranked_results
+    SE->>S: summarize_results(ranked_results)
+    S-->>SE: return summary
+    SE-->>M: return summary
